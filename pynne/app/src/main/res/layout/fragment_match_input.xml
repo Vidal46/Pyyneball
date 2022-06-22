@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.pynne.viewmodel.MatchViewModel" />
+            type="com.example.pynne.viewmodel.MatchInputViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,9 +21,10 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="29dp"
             android:layout_marginEnd="30dp"
-            android:text="Match Score"
+            android:text="@string/match_input_fragment_title"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,6 +35,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
+            android:hint="@string/match_input_fragment_first_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -43,44 +46,63 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="100dp"
+            android:hint="@string/match_input_fragment_first_score"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/firstPlayerName" />
 
         <com.example.core.component.Input
-            android:id="@+id/SecondPlayerName"
+            android:id="@+id/secondPlayerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
+            android:hint="@string/match_input_fragment_second_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/firstPlayerScore" />
 
         <com.example.core.component.Input
-            android:id="@+id/SecondPlayerScore"
+            android:id="@+id/secondPlayerScore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="100dp"
+            android:hint="@string/match_input_fragment_second_score"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SecondPlayerName" />
+            app:layout_constraintTop_toBottomOf="@+id/secondPlayerName" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/scoreContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="50dp"
+            android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore">
+            app:layout_constraintTop_toBottomOf="@+id/secondPlayerScore">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/firstPlayerLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:text="@{viewModel.firstPlayerName}"
                 android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
+                tools:text="primeiro" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/firstPlayerLabelScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@{viewModel.firstPlayerScore}"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
                 tools:text="primeiro" />
@@ -88,24 +110,48 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                android:text="X"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/firstPlayerLabel"
+                app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/secondPlayerLabelScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:text="@{viewModel.secondPlayerScore}"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/firstPlayerLabel"
                 app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
-                android:text="X" />
+                tools:text="segundo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/secondPlayerLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{viewModel.secondPlayerName}"
                 android:textSize="18sp"
-                android:text="@{viewModel.secondPlayerScore}"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/firstPlayerLabel"
                 app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
                 tools:text="segundo" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.example.core.component.ProgressButton
+            android:id="@+id/submitButton"
+            style="@style/PrimaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:enabled="false"
+            android:text="@string/match_input_fragment_button_label"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
