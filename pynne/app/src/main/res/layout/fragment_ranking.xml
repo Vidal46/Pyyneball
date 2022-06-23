@@ -9,9 +9,6 @@
             name="viewModel"
             type="com.example.pynne.viewmodel.MainViewModel" />
 
-        <variable
-            name="listener"
-            type="com.example.pynne.ui.listener.PlayerListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,32 +25,20 @@
             android:layout_marginEnd="30dp"
             android:text="@string/ranking_fragment_title"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:fontFamily="@font/raleway_bold"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/submitButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="30dp"
-            android:text="teste"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rankingList"
-            listener="@{listener}"
             players="@{viewModel.players}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
+            android:nestedScrollingEnabled="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"

@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="player"
-            type="com.example.pynne.model.Player" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -20,24 +13,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
-            android:text="@{player.name.toString()}"
-            android:textSize="16sp"
+            android:text="@string/ranking_fragment_name"
             android:fontFamily="@font/raleway_bold"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Antônio" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="23dp"
-            android:text="@{player.wins.toString()}"
+            android:layout_marginEnd="15dp"
+            android:text="@string/ranking_fragment_wins"
             android:textSize="16sp"
             android:fontFamily="@font/raleway_bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/playerLink"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="2" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -45,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

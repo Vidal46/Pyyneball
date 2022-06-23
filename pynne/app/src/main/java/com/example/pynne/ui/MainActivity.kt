@@ -2,7 +2,6 @@ package com.example.pynne.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,7 +9,6 @@ import com.example.pynne.App
 import androidx.navigation.ui.navigateUp
 import com.example.pynne.databinding.ActivityMainBinding
 import com.example.pynne.ui.di.MainComponent
-import com.example.pynne.viewmodel.MainViewModel
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {

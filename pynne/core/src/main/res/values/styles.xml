@@ -3,8 +3,8 @@
     <style name="PrimaryButton">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/white</item>
-<!--        <item name="android:fontFamily">@font/margem_bold</item>-->
-<!--        <item name="fontFamily">@font/margem_bold</item>-->
+        <item name="android:fontFamily">@font/raleway_bold</item>
+        <item name="fontFamily">@font/raleway_bold</item>
         <item name="android:background">@drawable/primary_button</item>
         <item name="android:gravity">center</item>
         <item name="android:minHeight">44dp</item>
