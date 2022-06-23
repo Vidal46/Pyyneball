@@ -2,12 +2,11 @@ package com.example.pynne.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
@@ -19,11 +18,10 @@ import com.example.pynne.databinding.FragmentRankingBinding
 import com.example.pynne.model.Player
 import com.example.pynne.ui.MainActivity
 import com.example.pynne.ui.adapter.PlayerAdapter
-import com.example.pynne.ui.listener.PlayerListener
 import com.example.pynne.viewmodel.MainViewModel
 import javax.inject.Inject
 
-class RankingFragment : Fragment(), PlayerListener {
+class RankingFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -44,7 +42,6 @@ class RankingFragment : Fragment(), PlayerListener {
     ): View {
         binding = FragmentRankingBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-        binding.listener = this
         binding.viewModel = viewModel
         return binding.root
     }
@@ -55,30 +52,13 @@ class RankingFragment : Fragment(), PlayerListener {
             findNavController().navigate(R.id.inputMatch)
         }
 
-        binding.submitButton.setOnClickListener {
-            Log.d("lista:", viewModel.players.value.toString())
-        }
-
-        binding.title.setOnClickListener {
-            viewModel.players.value?.add(Player("Luiza", "3", "4"))
-
-            binding.rankingList.run {
-                (adapter as PlayerAdapter).players =
-                    viewModel.players.value?.toMutableListSortedByDescending { it.wins }.orEmpty().toMutableList()
-            }
-//            binding.rankingList.adapter?.notifyDataSetChanged()
-        }
-    }
-
-    override fun onPlayerSelected(player: Player) {
-        Toast.makeText(requireContext(), player.name, Toast.LENGTH_SHORT).show()
+        requireActivity().onBackPressedDispatcher.addCallback(this) {}
     }
 }
 
-@BindingAdapter("players", "listener")
-fun setPlayers(recyclerView: RecyclerView, players: List<Player>, listener: PlayerListener) {
+@BindingAdapter("players")
+fun setPlayers(recyclerView: RecyclerView, players: List<Player>) {
     recyclerView.adapter = PlayerAdapter().apply {
         this.players = players.toMutableListSortedByDescending { it.wins }
-        this.listener = listener
     }
 }
