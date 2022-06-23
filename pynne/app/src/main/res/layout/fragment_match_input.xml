@@ -21,7 +21,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="29dp"
             android:layout_marginEnd="30dp"
-            android:fontFamily="@font/raleway_medium"
+            android:fontFamily="@font/raleway_bold"
             android:text="@string/match_input_fragment_title"
             android:textAlignment="center"
             android:textSize="22sp"
@@ -79,7 +79,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/secondPlayerName" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/scoreContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,64 +89,90 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/secondPlayerScore">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/firstPlayerLabel"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/raleway_bold"
-                android:text="@{viewModel.firstPlayerName}"
-                android:textSize="20sp"
+                android:orientation="vertical"
+                android:layout_marginStart="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
-                tools:text="primeiro" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstPlayerLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@{viewModel.firstPlayerName}"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
+                    tools:text="primeiro" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstPlayerLabelScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@{viewModel.firstPlayerScore}"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
+                    tools:text="primeiro" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/firstPlayerLabelScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
-                android:text="@{viewModel.firstPlayerScore}"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
-                tools:text="primeiro" />
-
-            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/matchSeparator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/raleway_bold"
-                android:text="X"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/firstPlayerLabel"
-                app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore" />
+                android:text="@string/match_input_fragment_button_separator"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/secondPlayerLabelScore"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:fontFamily="@font/raleway_bold"
-                android:text="@{viewModel.secondPlayerScore}"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/firstPlayerLabel"
-                app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
-                tools:text="segundo" />
+                android:orientation="vertical"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/secondPlayerLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
-                android:text="@{viewModel.secondPlayerName}"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/firstPlayerLabel"
-                app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
-                tools:text="segundo" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondPlayerLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@{viewModel.secondPlayerName}"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/firstPlayerLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
+                    tools:text="segundo" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondPlayerLabelScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@{viewModel.secondPlayerScore}"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toEndOf="@+id/firstPlayerLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/SecondPlayerScore"
+                    tools:text="segundo" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.example.core.component.ProgressButton
             android:id="@+id/submitButton"

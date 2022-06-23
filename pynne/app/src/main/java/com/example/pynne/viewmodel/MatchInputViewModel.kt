@@ -13,6 +13,11 @@ class MatchInputViewModel @Inject constructor() : ViewModel() {
     val secondPlayerName = MutableLiveData<String>()
     val secondPlayerScore = MutableLiveData<String>()
 
+    init {
+        firstPlayerScore.value = "0"
+        secondPlayerScore.value = "0"
+    }
+
     fun validateForm(
         firstPlayerName: Input,
         firstPlayerScore: Input,

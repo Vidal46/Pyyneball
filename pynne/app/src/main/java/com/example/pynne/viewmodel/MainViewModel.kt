@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pynne.model.Player
+import com.example.pynne.model.Player.Companion.generatePlayer
 import com.example.pynne.repository.RankingRepository
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -25,8 +26,8 @@ class MainViewModel @Inject constructor(private val repository: RankingRepositor
         }
 
     init {
-        _firstPlayer.value = Player.generatePlayer()
-        _secondPlayer.value = Player.generatePlayer()
+        _firstPlayer.value = generatePlayer()
+        _secondPlayer.value = generatePlayer()
 
         repository.getPlayers()
             .subscribe {
