@@ -12,14 +12,16 @@ git clone https://github.com/Vidal46/pyyne.git
 * Android SDK 30
 * [Android Studio 3.2+](https://developer.android.com/studio/index.html)
 
-#### Release management
+### Release management
 Git flow
 
-https://user-images.githubusercontent.com/54859569/175210578-8c5f2f6a-6580-468f-9ebb-8e2ac89efd45.png
+<img width="350" alt="Captura de Tela 2022-06-23 às 01 39 06" src="https://user-images.githubusercontent.com/54859569/175213585-d655db64-5d54-4985-864f-7ff43471b0e7.png">
 
 
+### Applied solutions
 | Approach | Benefit
 | ------- | --------- |
+| MVVM + ARCHITECTURE COMPONENTS | Architecture used to structure the application|
 | ANDROIDX | Used to reach all native Android support classes resources|
 | MATERIAL COMPONENTS | Used to stylize UI elements according to Google guideline|
 | CUSTOM VIEWS | Used to modularize visual components|
