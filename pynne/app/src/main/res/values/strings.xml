@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PYYNE - SCOREBOARD</string>
+    <string name="app_name">Pynneball</string>
 
     <!-- RANKING FRAGMENT   -->
     <string name="ranking_fragment_title">Matches Ranking</string>

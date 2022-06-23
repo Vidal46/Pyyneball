@@ -11,6 +11,8 @@
         <entry key="app/src/main/res/layout/player_dialog.xml" value="0.24583333333333332" />
         <entry key="app/src/main/res/layout/player_list_header.xml" value="0.24583333333333332" />
         <entry key="app/src/main/res/layout/player_view_holder.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.152" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.152" />
         <entry key="base/src/main/res/drawable/selector_background.xml" value="0.157" />
         <entry key="base/src/main/res/layout/input.xml" value="0.3098958333333333" />
         <entry key="core/src/main/res/drawable/error_background.xml" value="0.157" />
