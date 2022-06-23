@@ -27,5 +27,5 @@ Git flow
 | CUSTOM VIEWS | Used to modularize visual components|
 | RXJAVA/LIVE DATA | Used to delegate optimize requests to sub threads|
 | DAGGER 2 | Used to dependency injection |
-| DATABINDING | Used to adjust labels in XML |
+| DATABINDING | Used to bind Kotlin classes to XML files|
 | LOTTIE | Used to display animations |
