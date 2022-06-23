@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_match_input.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout/fragment_ranking.xml" value="0.246875" />
+        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/layout/match_input_bottom_sheet.xml" value="0.246875" />
+        <entry key="app/src/main/res/layout/player_dialog.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/layout/player_list_header.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/layout/player_view_holder.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.152" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.152" />
+        <entry key="base/src/main/res/drawable/selector_background.xml" value="0.157" />
+        <entry key="base/src/main/res/layout/input.xml" value="0.3098958333333333" />
+        <entry key="core/src/main/res/drawable/error_background.xml" value="0.157" />
+        <entry key="core/src/main/res/drawable/ic_close.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/selector_background.xml" value="0.157" />
+        <entry key="core/src/main/res/drawable/success_background.xml" value="0.157" />
+        <entry key="core/src/main/res/layout/ic_close.xml" value="0.24583333333333332" />
+        <entry key="core/src/main/res/layout/input.xml" value="0.246875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

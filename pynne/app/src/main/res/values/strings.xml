@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Pynneball</string>
+
+    <!-- RANKING FRAGMENT   -->
+    <string name="ranking_fragment_title">Matches Ranking</string>
+    <string name="ranking_fragment_wins">Wins</string>
+    <string name="ranking_fragment_name">Name</string>
+    <string name="ranking_fragment_button">New match</string>
+
+    <!-- MATCH INPUT FRAGMENT   -->
+    <string name="match_input_fragment_title">Scoreboard</string>
+    <string name="match_input_fragment_first_name">First Player Name</string>
+    <string name="match_input_fragment_first_score">First Player Score</string>
+    <string name="match_input_fragment_second_name">Second Player Name</string>
+    <string name="match_input_fragment_second_score">Second Player Score</string>
+    <string name="match_input_fragment_button_label">submit</string>
+    <string name="match_input_fragment_button_separator">X</string>
+    <string name="match_input_fragment_player_default_score">0</string>
+    <string name="match_input_fragment_alert">The scoreboard must have a winner</string>
+
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Input">
+        <attr name="mask" format="string" />
+        <attr name="alphanumeric" format="boolean" />
+        <attr name="android:hint" format="string" />
+        <attr name="android:imeOptions" />
+        <attr name="android:inputType" />
+        <attr name="android:maxLength" />
+        <attr name="android:drawableEnd" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="ProgressButton">
+        <attr name="android:text" />
+        <attr name="progressColor" format="color" />
+    </declare-styleable>
+</resources>
