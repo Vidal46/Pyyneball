@@ -3,6 +3,8 @@
 
     <!-- RANKING FRAGMENT   -->
     <string name="ranking_fragment_title">Matches Ranking</string>
+    <string name="ranking_fragment_wins">Wins</string>
+    <string name="ranking_fragment_name">Name</string>
     <string name="ranking_fragment_button">New match</string>
 
     <!-- MATCH INPUT FRAGMENT   -->
@@ -12,5 +14,6 @@
     <string name="match_input_fragment_second_name">Second Player Name</string>
     <string name="match_input_fragment_second_score">Second Player Score</string>
     <string name="match_input_fragment_button_label">submit</string>
+    <string name="match_input_fragment_alert">The scoreboard must have a winner</string>
 
 </resources>

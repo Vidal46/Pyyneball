@@ -3,17 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/foosball"
-    app:startDestination="@id/rankingFragment">
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.pynne.ui.fragment.SplashFragment"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/startApplication"
+            app:destination="@+id/rankingFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/rankingFragment"
         android:name="com.example.pynne.ui.fragment.RankingFragment"
         android:label="Ranking"
-        tools:layout="@layout/fragment_ranking" />
+        tools:layout="@layout/fragment_ranking">
 
-    <action
-        android:id="@+id/inputMatch"
-        app:destination="@+id/inputMatchFragment" />
+        <action
+            android:id="@+id/inputMatch"
+            app:destination="@+id/inputMatchFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/inputMatchFragment"
