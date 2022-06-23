@@ -23,9 +23,7 @@ import androidx.core.view.children
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.core.R
-import com.example.core.extension.hideKeyboard
 import com.example.core.extension.setVisibility
-import com.example.core.extension.showKeyboard
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -60,31 +58,19 @@ class Input @JvmOverloads constructor(
                 inputText?.removeTextChangedListener(inputValidation)
         }
 
-    private var phoneWatcher: PhoneWatcher
     private var maskWatcher: MaskWatcher
-    private var moneyWatcher: MoneyWatcher
 
     var mask: String = ""
         set(value) {
             field = value
-            inputText?.removeTextChangedListener(phoneWatcher)
             inputText?.removeTextChangedListener(maskWatcher)
-            inputText?.removeTextChangedListener(moneyWatcher)
             if (field.isNotEmpty()) {
-                when (field) {
-                    "phone" -> {
-                        phoneWatcher = PhoneWatcher(inputText)
-                        inputText?.addTextChangedListener(phoneWatcher)
-                    }
-                    "money" -> {
-                        moneyWatcher = MoneyWatcher(inputText)
-                        inputText?.addTextChangedListener(moneyWatcher)
-                    }
-                    else -> {
-                        maskWatcher = MaskWatcher(inputText, field)
-                        inputText?.addTextChangedListener(maskWatcher)
-                    }
-                }
+
+
+                maskWatcher = MaskWatcher(inputText, field)
+                inputText?.addTextChangedListener(maskWatcher)
+
+
             }
         }
 
@@ -122,9 +108,7 @@ class Input @JvmOverloads constructor(
             e.printStackTrace()
         }
 
-        phoneWatcher = PhoneWatcher(inputText)
         maskWatcher = MaskWatcher(inputText, mask)
-        moneyWatcher = MoneyWatcher(inputText)
 
         isSaveEnabled = true
 
@@ -163,7 +147,6 @@ class Input @JvmOverloads constructor(
                     (inputType == TYPE_CLASS_TEXT or TYPE_TEXT_VARIATION_PASSWORD) || drawableEnd != -1
                 if (inputType == TYPE_CLASS_TEXT or TYPE_TEXT_VARIATION_PASSWORD) {
                     inputLayout?.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
-//                    inputLayout?.setEndIconDrawable(R.drawable.password_toggle)
                 } else inputLayout?.endIconMode = TextInputLayout.END_ICON_CUSTOM
 
                 recycle()
@@ -187,7 +170,6 @@ class Input @JvmOverloads constructor(
             savedState.text = getText()
             savedState.error = inputError?.text.toString()
             savedState.mask = mask
-//            savedState.validate = validate
             savedState.inputType =
                 inputText?.inputType ?: TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
             savedState
@@ -203,8 +185,6 @@ class Input @JvmOverloads constructor(
             if (state is SavedState) {
                 super.onRestoreInstanceState(state.superState)
                 cleanInput()
-//                if (state.validate != null) validate = state.validate
-//                setupValidation()
                 setError(state.error.orEmpty())
                 mask = state.mask.orEmpty()
                 setText(state.text, state.inputType)
@@ -212,11 +192,6 @@ class Input @JvmOverloads constructor(
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
-
-    fun requestInputFocus() {
-        inputText?.requestFocus()
-        inputText?.showKeyboard()
     }
 
     fun setError(error: String) {
@@ -245,10 +220,6 @@ class Input @JvmOverloads constructor(
         inputText?.text?.clear()
     }
 
-    fun setOnEditorActionListener(l: TextView.OnEditorActionListener) {
-        inputText?.setOnEditorActionListener(l)
-    }
-
     private fun setupValidation() {
         inputText?.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus()) inputSuccess()
@@ -262,10 +233,8 @@ class Input @JvmOverloads constructor(
             ) {
                 val valid = validate?.invoke(v.text, false, false)
                 validationData.postValue(valid)
-                inputText?.hideKeyboard()
                 return@setOnEditorActionListener true
             }
-            // Return true if you have consumed the action, else false.
             return@setOnEditorActionListener false
         }
         inputValidation = InputTextWatcher(validationData, validate ?: return)
@@ -284,38 +253,8 @@ class Input @JvmOverloads constructor(
         inputLayout?.setBackgroundResource(R.drawable.selector_background)
     }
 
-    fun disableInputTextSelection() {
-        inputText?.customSelectionActionModeCallback = object : ActionMode.Callback {
-            override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
-                return false
-            }
-
-            override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-                return false
-            }
-
-            override fun onDestroyActionMode(mode: ActionMode?) {
-
-            }
-
-            override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-                return false
-            }
-        }
-        inputText?.setOnLongClickListener(null)
-        inputText?.setTextIsSelectable(false)
-    }
-
-    fun setOnClickListener(click: () -> Unit) {
-        inputText?.setOnClickListener { click.invoke() }
-    }
-
     fun addTextChangedListener(watcher: TextWatcher) {
         inputText?.addTextChangedListener(watcher)
-    }
-
-    fun removeTextChangedListener(watcher: TextWatcher) {
-        inputText?.removeTextChangedListener(watcher)
     }
 
     private fun inputError() {
@@ -329,7 +268,6 @@ class Input @JvmOverloads constructor(
         var error: String? = null
         var mask: String? = null
 
-        //        var validate: Validation? = null
         var inputType: Int = InputType.TYPE_TEXT_VARIATION_NORMAL
 
         constructor(source: Parcel) : super(source) {
@@ -337,8 +275,6 @@ class Input @JvmOverloads constructor(
                 text = source.readString()
                 error = source.readString()
                 mask = source.readString()
-//                @Suppress("UNCHECKED_CAST")
-//                validate = source.readSerializable() as? Validation
                 inputType = source.readInt()
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -353,8 +289,6 @@ class Input @JvmOverloads constructor(
                 out.writeString(text)
                 out.writeString(error)
                 out.writeString(mask)
-//                if (validate is Serializable)
-//                    out.writeSerializable(validate as? Serializable)
                 out.writeInt(inputType)
             } catch (e: Exception) {
                 e.printStackTrace()
